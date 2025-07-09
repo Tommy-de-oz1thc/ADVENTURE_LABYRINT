@@ -1,4 +1,4 @@
-# ADVENTURE_LABYRINT
+# ADVENTURE LABYRINT
 NSAM Assembly Windows dos terminal program
 
 A retro-style DOS terminal game written in NASM Assembly for Windows.
