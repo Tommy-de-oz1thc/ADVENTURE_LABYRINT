@@ -6,9 +6,9 @@
 (1)**Map**\*: Here in in the *Hallway* you can pisk up a *Map*. Hint *1000* shows the *Map*.
 (2)**Bedroom**: Connected to the *Hallway*, *Living Room*, *Kitchen*, and *Read*.
 (2)**Read**\*: Located in the *Bedroom*. Here, you can read a name from a `.txt` file.
-*(3)**Kitchen**: Connected to the *Hallway*, *Living Room*, *Bedroom*. Here, you can find a rusty key to unlock the *Attic*.
-*(4)**Living Room**: Connected to the *Hallway*, *Bedroom*, *Kitchen*, and *Write*.
-*(4)**Write**\*: Located in the *Living Room*. Here, you can enter a name to a `.txt` file.
+(3)**Kitchen**: Connected to the *Hallway*, *Living Room*, *Bedroom*. Here, you can find a rusty key to unlock the *Attic*.
+(4)**Living Room**: Connected to the *Hallway*, *Bedroom*, *Kitchen*, and *Write*.
+(4)**Write**\*: Located in the *Living Room*. Here, you can enter a name to a `.txt` file.
 *(5)**Attic**: Locked room, requires a key. Connected to the *Hallway* and *Reverse*. 
                In the attic, you can receive a greeting where you enter your first and last name twice, and it combines them.
 *(6)**Reverse**: Connected to the *Hallway* and *Bible Verse*. Here, you receive a word spelled backwards.
