@@ -14,12 +14,12 @@ This is a pure text-based labyrinth adventure running in the console.
 
 ## 📦 Current Version
 
-**Version 0.1a**
+**Version 0.2a**
 
 - Intro screen with version info and ASCII box
-- 3 rooms working (Hallway, Kitchen, Bedroom)
+- 4 rooms working (Hallway, Kitchen, Bedroom, Living Room)
 - Map system preview
-- Placeholder for additional rooms (Attic, Living Room, etc.)
+- Placeholder for additional rooms (Attic, etc.)
 
 ## 🧠 Author
 
