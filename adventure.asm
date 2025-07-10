@@ -9,7 +9,7 @@ section .data
 	intro_line1 db "+------------------------------------------+", 10, 0
 	intro_line2 db "|  WELCOME TO ADVENTURE LABYRINT           |", 10, 0
 	intro_line3 db "|  Made by Tommy Clemmensen *OZ1THC* 2025  |", 10, 0
-	intro_line4 db "|  coded in NASM Assembly - Version 0.1a   |", 10, 0
+	intro_line4 db "|  coded in NASM Assembly - Version 0.2a   |", 10, 0
 	intro_line5 db "+------------------------------------------+", 10, 0
 	press_key_txt db "Press any key to start...", 10, 0
     sluttext db "press any key to exit.", 10, 0
