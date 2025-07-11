@@ -52,8 +52,10 @@ Built from scratch in NASM as a personal learning and game project.
 
 ### 📸 Screenshot
 
-![image](https://github.com/user-attachments/assets/0d4ef5f2-8f3a-47e8-ab88-dcd23c5df3f5)
+<img width="720" height="134" alt="image" src="https://github.com/user-attachments/assets/0b5b4199-1116-4d5b-8fb7-c71dfe2d24fb" />
 
-![image](https://github.com/user-attachments/assets/ecc1bdc0-531a-4348-a374-998c14b12482)
+<img width="806" height="65" alt="image" src="https://github.com/user-attachments/assets/ee6e38e6-205f-46c8-b755-be3ea7bf0386" />
 
-![image](https://github.com/user-attachments/assets/ab927a55-2c4a-4e5f-9f94-2ebb34411376)
+
+<img width="1124" height="422" alt="image" src="https://github.com/user-attachments/assets/ac775742-3a63-4894-8f10-0e9014d4cd82" />
+
