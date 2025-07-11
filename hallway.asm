@@ -69,6 +69,7 @@ scan_choose:
 	mov dword [retur_value], 1 ; 1 = Hallway
     je Attic					;check up you the key to open the door to the attic
     cmp eax, 5
+	mov dword [retur_value], 1 ; 1 = Hallway
     je exit_game
     cmp eax, 6
     je find_map

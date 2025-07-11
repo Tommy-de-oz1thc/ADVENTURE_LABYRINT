@@ -7,7 +7,7 @@ global exit_game
 extern _exit
 extern _fopen, _fgets, _printf
 extern Hallway, Bedroom, Kitchen, Living_Room, Attic, SaveGame, LoadGame   ;link to room
-extern _printf, _scanf, _getch, _system  
+extern _printf, _scanf, _getch, _system, retur_value 
 extern LoadGame
 
 section .data
@@ -16,10 +16,12 @@ section .data
 	intro_line1 db "+------------------------------------------+", 10, 0
 	intro_line2 db "|  WELCOME TO ADVENTURE LABYRINT           |", 10, 0
 	intro_line3 db "|  Made by Tommy Clemmensen *OZ1THC* 2025  |", 10, 0
-	intro_line4 db "|  coded in NASM Assembly - Version 0.6a   |", 10, 0
+	intro_line4 db "|  coded in NASM Assembly - Version 0.7a   |", 10, 0
 	intro_line5 db "+------------------------------------------+", 10, 0
 	press_key_txt db "Start(1), Save Game *works in all rooms*(500) Load Game *work only her*(501) ", 0
-    sluttext db "Press any key to exit.", 10, 0
+    slutHallway db "You walked out of the house", 10, 0
+	sluttext db "Press any key to exit.", 0
+	slutAttic db "Do not jump out off a window.", 10, 0
    
 
 section .bss
@@ -84,18 +86,32 @@ SaveAndContinue:
     call SaveGame
     jmp main
 	
-
-	
 exit_game:
-    push cls_cmd   ; clear screan
+    push cls_cmd
     call _system
-	
-    push sluttext
+
+    mov eax, [retur_value]
+    cmp eax, 5          ; 5 = Attic
+    je attic_exit
+
+hallway_exit:
+    push slutHallway   ; Almindelig afslutning
+    call _printf
+    add esp, 4
+    jmp done
+
+attic_exit:
+    push slutAttic     ; Alternativ afslutning fra loftet
+    call _printf
+    add esp, 4
+
+done:
+    push sluttext      ; Almindelig afslutning
     call _printf
     add esp, 4
     call _getch
-   
-    mov eax, 1      
-    push eax
-    call _exit    
+    mov eax, 0
+    ret
+
+    
 

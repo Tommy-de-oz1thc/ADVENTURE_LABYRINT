@@ -2,7 +2,7 @@ global Attic
 
 extern choose, have_key, retur_value, map_found
 extern _printf, _scanf, _getch, _system
-extern Hallway, Show_map, SaveGame
+extern Hallway, Show_map, SaveGame, exit_game
 extern choose
 extern ret_to_hallway, current_room
 
@@ -13,7 +13,7 @@ section .data
 	some_missing_text db "The door to the attic is locked. You don't have the key! Press any key to go back.", 10, 0
 	name_format db "%s", 0
 	greeting_format db "Hello %s %s", 10, 0
-	prompt_attic db "Go back to the hallway(1), Backwards Text(2): ", 0
+	prompt_attic db "Go back to the hallway(1), Backwards Text(2) Jump out of a window(3): ", 0
 	frontname db "What is your first name? ", 0
 	lastname db "What is your last name? ", 0
     no_map_msg db "You don't have the map, press any key to go back.", 0
@@ -75,6 +75,9 @@ Attic:
     je Hallway
     cmp eax, 2
     ;je Reverse
+	cmp eax, 3
+	mov dword [retur_value], 5 ; 5 = Attic
+	je exit_game
 	cmp eax, 500
     je SaveAndContinue
 	cmp eax, 1000
