@@ -14,7 +14,7 @@ This is a pure text-based labyrinth adventure running in the console.
 
 ## 📦 Current Version
 
-**Version 0.6a**
+**Version 0.7a**
 
 - Intro screen with version info and ASCII box
 - 5 rooms working (Hallway, Kitchen, Bedroom, Living Room, Attic, etc....)
