@@ -2,10 +2,17 @@
 
 This file documents the changes, improvements, and new features for each version of the game.
 
---
+---
+
+## Version 1.0 – 2025 July 11
+🔹 **First release*
+- Biblevers and Reverse is added and the first exe file is released.
+---
+
 ## Version 0.8 – 2025 July 11
 🔹 **Key System**
 - New key system so you can choose between the keys you find.
+  
 ---
 
 ## Version 0.7 – 2025 July 11
