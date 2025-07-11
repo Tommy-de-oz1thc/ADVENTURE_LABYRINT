@@ -58,8 +58,10 @@ show_keys_and_try_unlock:
     call _printf
     add esp, 4
     call _getch
-    popad
-    ret
+    mov eax, [retur_value]
+    cmp eax, 1
+    je Hallway
+	ret
 
 .get_choice:
     push choose_key_msg

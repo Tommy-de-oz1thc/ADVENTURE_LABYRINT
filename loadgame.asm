@@ -1,6 +1,7 @@
 ; === loadgame.asm ===
 global LoadGame
-extern current_room, map_found, have_key
+extern current_room
+extern map_found, have_key_attic
 extern _fopen, _fscanf, _fclose
 extern main, Hallway, Bedroom, Kitchen, Attic, Living_Room
 
@@ -11,19 +12,19 @@ fmt_string db "%d %d %d", 0
 
 section .text
 LoadGame:
-    ; Åbn filen i læsemodus
+    ; Open in readmode
     push mode_read
     push filename
     call _fopen
     add esp, 8
     test eax, eax
-    jz .done          ; Kun hvis filen findes
-    mov ebx, eax      ; Filhåndtag
+    jz .done          ; One if the file exist
+    mov ebx, eax      ; File handeling
 
     ; fscanf(fp, "%d %d %d", &current_room, &have_map, &have_key)
     push current_room
     push map_found
-    push have_key
+    push have_key_attic
 
     push fmt_string
     push ebx
@@ -37,7 +38,7 @@ LoadGame:
 
 .done:
     .done:
-    ; Hop videre til rummet efter load
+    ; Jump after current room
     mov eax, [current_room]
     cmp eax, 0
     je main

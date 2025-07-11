@@ -1,6 +1,9 @@
 global Living_Room
 extern ret_to_living_room, current_room
-
+extern _printf, _scanf, _getch, _system     ; <-- underscore!
+extern _fopen, _fprintf, _fclose
+extern Hallway, Bedroom, Kitchen, Write, Show_map, SaveGame 
+extern retur_value, map_found
 extern choose, have_key, retur_value, map_found
 
 section .data
@@ -21,12 +24,6 @@ section .bss
 	file resd 1
 	
 section .text
-    extern _printf, _scanf, _getch, _system     ; <-- underscore!
-    extern _fopen, _fprintf, _fclose
-    extern Hallway, Bedroom, Kitchen, Write, Show_map, SaveGame 
-    extern retur_value, map_found
-	
-global Living_Room
 
 Living_Room:
     push cls_cmd

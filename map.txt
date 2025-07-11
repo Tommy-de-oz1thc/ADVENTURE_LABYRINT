@@ -11,6 +11,6 @@
 (4)**Write**\*: Located in the *Living Room*. Here, you can enter a name to a `.txt` file.
 (5)**Attic**: Locked room, requires a key. Connected to the *Hallway* and *Reverse*. 
                In the attic, you can receive a greeting where you enter your first and last name twice, and it combines them.
-*(6)**Reverse**: Connected to the *Hallway* and *Bible Verse*. Here, you receive a word spelled backwards.
-*(7)**Bible Verse**: Connected to the *Backwards* — here you can choose one of 17 Bible verses to read.
+(6)**Reverse**: Connected to the *Hallway* and *Bible Verse*. Here, you receive a word spelled backwards.
+(7)**Bible Verse**: Connected to the *Backwards* — here you can choose one of 17 Bible verses to read.
 

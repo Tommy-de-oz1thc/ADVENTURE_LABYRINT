@@ -2,7 +2,7 @@ global SaveGame
 
 extern _fopen, _fprintf, _fclose, _printf, _getch
 extern current_room
-extern have_key, map_found
+extern map_found, have_key_attic 
 extern Hallway, Bedroom, Kitchen, Attic, Living_Room, main
 
 section .data
@@ -25,7 +25,7 @@ SaveGame:
     mov eax, [save_fp]
     push dword [current_room]
     push dword [map_found]
-    push dword [have_key]
+    push dword [have_key_attic]
     push save_format
     push eax
     call _fprintf

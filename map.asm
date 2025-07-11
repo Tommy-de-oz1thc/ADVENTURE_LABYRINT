@@ -1,6 +1,10 @@
 global Show_map
 global retur_value
-global ret_to_hallway, ret_to_living_room, ret_to_bedroom, ret_to_kitchen
+global ret_to_hallway, ret_to_living_room, ret_to_bedroom, ret_to_kitchen, ret_to_attic
+
+extern _printf, _getch, _system
+extern _fopen, _fclose, _fgets
+extern Hallway, Living_Room, Bedroom, Kitchen, attic_entry
 
 section .data
 	map_text     db "You look at the old map:", 10, "[map contents here]", 10, 0
@@ -19,9 +23,6 @@ section .bss
 
 
 section .text
-	extern _printf, _getch, _system
-	extern _fopen, _fclose, _fgets
-	extern Hallway, Living_Room, Bedroom, Kitchen
 
 Show_map:
     push cls_cmd
@@ -92,6 +93,8 @@ finish_with_reading_map:
     je ret_to_bedroom
     cmp eax, 4
     je ret_to_kitchen
+	cmp eax, 5
+    je ret_to_attic
    
     jmp Show_map
 
@@ -110,6 +113,10 @@ ret_to_bedroom:
 ret_to_kitchen:
     mov dword [retur_value], 0
     jmp Kitchen
+	
+ret_to_attic:
+    mov dword [retur_value], 0
+    jmp attic_entry
 
 close_and_end:
     push dword [file]
