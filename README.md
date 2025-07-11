@@ -15,12 +15,12 @@ This is a pure text-based labyrinth adventure running in the console.
 ## 📦 Current Version
 
 Latest release: **v.0.8** – Includes 5 rooms, save and load functionality.
-- Added new key system, so you can choose between all the keys you pickup.
+- Added new advanced key system, so you can choose between all the keys you pickup.
 
 ## Roadmap
 
 - **v.1.0** – Add Reverse function and Biblevers feature
-- **v.2.0** – Advanced key system and CW (Morse code) integration
+- **v.2.0** – CW (Morse code) integration
 - **v.3.0** – Ability to collect and choose weapons
 - **v.4.0** – Monster encounters and combat
 
