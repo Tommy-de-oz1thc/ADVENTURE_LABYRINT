@@ -1,10 +1,12 @@
 global Attic
+global attic_entry
 
 extern choose, have_key, retur_value, map_found
 extern _printf, _scanf, _getch, _system
 extern Hallway, Show_map, SaveGame, exit_game
 extern choose
 extern ret_to_hallway, current_room
+extern show_keys_and_try_unlock, have_key_attic
 
 section .data
 	text_attic db "You are now in the dusty attic. There's not much here... yet.", 10, 0
@@ -19,17 +21,19 @@ section .data
     no_map_msg db "You don't have the map, press any key to go back.", 0
 	map_tip db 'Press "1000" to view the map', 10, 0
 	
+
+	
 section .bss
 
 section .text
 
-Attic: 
+Attic: 	
+    call TjeckKey_OK
 
-    call TjeckKey
-	
+attic_entry:
 	push cls_cmd            ; clear screan
     call _system
-    	   
+	
     push text_attic
     call _printf
     add esp, 4	
@@ -107,20 +111,13 @@ not_any_map:
     add esp, 4
     call _getch
     jmp Attic
-	
-TjeckKey:
-    mov eax, [have_key]
+
+TjeckKey_OK:
+    mov dword [retur_value], Hallway
+    call show_keys_and_try_unlock
     cmp eax, 1
-    je key_ok         ; hvis man HAR nøglen, så spring videre
+    je attic_entry   ; korrekt nøgle valgt
+    jmp Hallway      ; forkert nøgle eller ingen nøgler
 
-    ; ellers vis fejlen og gå tilbage
-    push cls_cmd
-    call _system
-    push some_missing_text
-    call _printf
-    add esp, 4
-    call _getch
-    jmp Hallway       ; send spilleren tilbage
 
-key_ok:
-    ret
+   	

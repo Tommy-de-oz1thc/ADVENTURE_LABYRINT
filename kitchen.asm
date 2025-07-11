@@ -4,7 +4,8 @@ global Kitchen
 	 extern ret_to_kichten
 	 extern Hallway, Bedroom, Living_Room, Show_map, SaveGame
 	 extern _printf, _scanf, _getch, _system
-     extern choose, have_key, retur_value, map_found, have_key, current_room	 
+     extern choose, have_key, retur_value, map_found, current_room	 
+	 extern have_key_attic, have_key_kitchen
 	 
 section .data
     text_kitchen db "You are now in the slightly messy kitchen.", 10, 0
@@ -15,6 +16,8 @@ section .data
     found_text db "You find a rusty key on the table. Press any key to pick it up.", 10, 0
     no_map_msg db "You don't have the map, press any key to go back.", 0
 	map_tip db 'Press "1000" to view the map', 10, 0
+
+    debug_format db "DEBUG: have_key_attic = %d", 10, 0
 	
 section .bss
 	
@@ -29,31 +32,37 @@ Kitchen:
     cmp eax, 0
     je .spring_map_tip
 
-	push map_tip
+	cmp eax, 0
+    je .spring_map_tip
+
+    push map_tip
 	call _printf
 	add esp, 4
 
 .spring_map_tip:
-
+	
     push text_kitchen
     call _printf
     add esp, 4
+	
+    mov al, [have_key_attic]
+    cmp al, 0
+    je .show_prompt_with_key
 
-    mov eax, [have_key]
-    cmp eax, 0
-    je show_prompt1
-
+    ; Har allerede nøglen – vis menu uden "Take key"
     push prompt2_kitchen
     call _printf
     add esp, 4
-    jmp scan_choose
+    jmp .read_choice
 
-show_prompt1:
+.show_prompt_with_key:
+    ; Har IKKE nøglen – vis menu med "Take key"
     push prompt1_kitchen
     call _printf
     add esp, 4
 
-scan_choose:
+
+.read_choice:
     add esp, 4
     push choose               ;choose room to jump to
     push choose_format
@@ -83,8 +92,8 @@ SaveAndContinue:
 Pick_key:
     push cls_cmd
     call _system
-
-    mov eax, [have_key]
+   ; mov eax, [have_key]
+    movzx eax, byte [have_key_attic]
     cmp eax, 0
     je TakeIt
 
@@ -96,7 +105,9 @@ AlreadyHaveKey:
     jmp Kitchen
 
 TakeIt:
-    mov dword [have_key], 1
+   ; mov dword [have_key], 1
+	mov byte [have_key_attic], 1
+
     push found_text
     call _printf
     add esp, 4
