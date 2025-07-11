@@ -1,10 +1,10 @@
 global Bedroom
 
-extern Hallway, Living_Room, Kitchen, Show_map
+extern Hallway, Living_Room, Kitchen, Show_map, SaveGame
 extern _printf, _scanf, _getch, _system
 extern choose, map_found, map_tip
 extern _fopen, _fprintf, _fclose, _fgets
-extern retur_value
+extern retur_value, current_room
 
 section .data
     text_bedroom db "You are now in the bedroom", 10, 0  
@@ -64,7 +64,16 @@ Bedroom:
     je Kitchen
     cmp eax, 4
     je Read
+	cmp eax, 500
+    je SaveAndContinue
+    cmp eax, 1000
+    je tjeck_map_showing        ;show a txt with the map
 	jmp Bedroom
+	
+SaveAndContinue:
+    mov dword [current_room], 2   ; 2 = Bedroom
+    call SaveGame
+    jmp Bedroom
 	
 Read:
     ; opon file in  read-mode

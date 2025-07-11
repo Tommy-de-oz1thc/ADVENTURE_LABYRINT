@@ -1,15 +1,14 @@
 global Hallway
-global map_found
 
 extern _printf, _scanf, _getch, _system 
-extern Living_Room, Kitchen, Bedroom, Attic, exit_game, Show_map
-extern choose, have_key, retur_value
-extern ret_to_hallway
+extern Living_Room, Kitchen, Bedroom, Attic, exit_game, Show_map,SaveGame
+extern choose, have_key, retur_value, map_found
+extern ret_to_hallway, current_room
 
 section .data
     cls_cmd db "cls", 0       ; define the clear screan
 	text_hallway db "You are now in the Hallway", 10, 0
-    prompthallway1 db "Living Room(1), Bedroom(2), Kitchen(3), Attic(4), Exit the House(5): Take the Map(6)", 0
+    prompthallway1 db "Living Room(1), Bedroom(2), Kitchen(3), Attic(4), Exit the House(5): Take the Map(6) ", 0
     prompthallway2 db "Living Room(1), Bedroom(2), Kitchen(3), Attic(4), Exit the House(5): ", 0
 	choose_format db "%d", 0
 	map_text_found db "You pick up the old map:", 10, "Press any key to continue", 0
@@ -19,7 +18,7 @@ section .data
 	  
     
 section .bss
-   map_found resb 1
+  
    
 section .text  	
 Hallway:
@@ -73,11 +72,20 @@ scan_choose:
     je exit_game
     cmp eax, 6
     je find_map
+	cmp eax, 500
+    je SaveAndContinue
     cmp eax, 1000
     je tjeck_map_showing        ;show a txt with the map
 	
     call _getch
     jmp Hallway                 ;jump back if no room was choosen  
+
+SaveAndContinue:
+    mov dword [current_room], 1   ; 1 = Hallway
+    call SaveGame
+    jmp Hallway
+
+
 
 find_map:
     push cls_cmd

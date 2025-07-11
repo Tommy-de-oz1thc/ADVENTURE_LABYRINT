@@ -2,9 +2,9 @@ global Attic
 
 extern choose, have_key, retur_value, map_found
 extern _printf, _scanf, _getch, _system
-extern Hallway, Show_map
+extern Hallway, Show_map, SaveGame
 extern choose
-extern ret_to_hallway
+extern ret_to_hallway, current_room
 
 section .data
 	text_attic db "You are now in the dusty attic. There's not much here... yet.", 10, 0
@@ -75,9 +75,18 @@ Attic:
     je Hallway
     cmp eax, 2
     ;je Reverse
+	cmp eax, 500
+    je SaveAndContinue
+	cmp eax, 1000
+    je tjeck_map_showing        ;show a txt with the map
     jmp Attic
 
-tjeck_map_shoving:
+SaveAndContinue:
+    mov dword [current_room], 5   ; 5 = Attic
+    call SaveGame
+    jmp Attic
+
+tjeck_map_showing:
     mov eax, [map_found]
     cmp eax, 1
     jne not_any_map

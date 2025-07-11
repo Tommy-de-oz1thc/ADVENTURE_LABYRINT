@@ -1,10 +1,14 @@
 global main ;Starter file
+global current_room
+global have_key
+global map_found
 global choose
 global exit_game
 extern _exit
 extern _fopen, _fgets, _printf
-extern Hallway   ;link to room
-extern _printf, _getch, _system  
+extern Hallway, Bedroom, Kitchen, Living_Room, Attic   ;link to room
+extern _printf, _scanf, _getch, _system  
+extern LoadGame
 
 section .data
     cls_cmd db "cls", 0       ; define the clear screan
@@ -14,12 +18,16 @@ section .data
 	intro_line3 db "|  Made by Tommy Clemmensen *OZ1THC* 2025  |", 10, 0
 	intro_line4 db "|  coded in NASM Assembly - Version 0.3a   |", 10, 0
 	intro_line5 db "+------------------------------------------+", 10, 0
-	press_key_txt db "Press any key to start...", 10, 0
+	press_key_txt db "Start(1), Load Game (501) ", 0
     sluttext db "Press any key to exit.", 10, 0
    
 
 section .bss
 	choose resd 1
+	current_room resd 1
+    have_map     resd 1
+    have_key     resd 1
+	map_found resb 1
 	 
 section .text   
     
@@ -56,9 +64,33 @@ main:
 
     call show_intro_box	
      
-    call _getch           ; wait for keypress
+    push choose                 ;choose room to jump to
+    push choose_format
+    call _scanf                
+    add esp, 8
 
-    jmp Hallway           ; jump to room
+    mov eax, [choose]
+    cmp eax, 1
+	je Hallway
+    cmp eax, 501
+    je LoadAndStart
+    cmp eax, 2
+	jmp main;
+	
+LoadAndStart:
+    call LoadGame
+    mov eax, [current_room]
+    cmp eax, 1
+    je Hallway
+    cmp eax, 2
+    je Bedroom
+    cmp eax, 3
+    je Kitchen
+    cmp eax, 4
+    je Attic
+    cmp eax, 5
+    je Living_Room
+    jmp Hallway  ; fallback
 	
 exit_game:
     push cls_cmd   ; clear screan

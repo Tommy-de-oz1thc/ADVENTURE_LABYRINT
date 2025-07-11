@@ -1,5 +1,5 @@
 global Living_Room
-extern ret_to_living_room
+extern ret_to_living_room, current_room
 
 extern choose, have_key, retur_value, map_found
 
@@ -23,7 +23,7 @@ section .bss
 section .text
     extern _printf, _scanf, _getch, _system     ; <-- underscore!
     extern _fopen, _fprintf, _fclose
-    extern Hallway, Bedroom, Kitchen, Write, Show_map 
+    extern Hallway, Bedroom, Kitchen, Write, Show_map, SaveGame 
     extern retur_value, map_found
 	
 global Living_Room
@@ -64,8 +64,17 @@ Living_Room:
     je Kitchen
     cmp eax, 4
     je Write
+	cmp eax, 500
+    je SaveAndContinue
+    cmp eax, 1000
+    je tjeck_map_showing        ;show a txt with the map
+	jmp Living_Room
     
-    
+SaveAndContinue:
+    mov dword [current_room], 4   ; 4 = Living Room
+    call SaveGame
+    jmp Living_Room
+	
 Write:
     push cls_cmd
     call _system

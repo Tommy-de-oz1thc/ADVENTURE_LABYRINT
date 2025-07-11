@@ -1,10 +1,10 @@
 global Kitchen
-global have_key
+
 
 	 extern ret_to_kichten
-	 extern Hallway, Bedroom, Living_Room, Show_map
+	 extern Hallway, Bedroom, Living_Room, Show_map, SaveGame
 	 extern _printf, _scanf, _getch, _system
-     extern choose, have_key, retur_value, map_found	 
+     extern choose, have_key, retur_value, map_found, have_key, current_room	 
 	 
 section .data
     text_kitchen db "You are now in the slightly messy kitchen.", 10, 0
@@ -17,7 +17,7 @@ section .data
 	map_tip db 'Press "1000" to view the map', 10, 0
 	
 section .bss
-	have_key resd 1
+	
 	
 section .text
     
@@ -69,12 +69,16 @@ scan_choose:
     je Bedroom
     cmp eax, 4
     je Pick_key
-    jmp Kitchen
+	cmp eax, 500
+    je SaveAndContinue
     cmp eax, 1000
     je tjeck_map_showing      ;show a txt with the map
-    
-	call _getch
     jmp Kitchen               ;jump back if no room was choosen  
+	
+SaveAndContinue:
+    mov dword [current_room], 3   ; 3 = Kitchen
+    call SaveGame
+    jmp Kitchen
 	
 Pick_key:
     push cls_cmd
