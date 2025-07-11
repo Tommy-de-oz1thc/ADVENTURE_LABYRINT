@@ -2,6 +2,9 @@
 
 This file documents the changes, improvements, and new features for each version of the game.
 
+--
+## Version 0.8 – 2025 July 11
+- New key system so you can choose between the keys you find.
 ---
 
 ## Version 0.7 – 2025 July 11
