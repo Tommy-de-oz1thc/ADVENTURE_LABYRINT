@@ -16,7 +16,7 @@ section .data
 	intro_line1 db "+------------------------------------------+", 10, 0
 	intro_line2 db "|  WELCOME TO ADVENTURE LABYRINT           |", 10, 0
 	intro_line3 db "|  Made by Tommy Clemmensen *OZ1THC* 2025  |", 10, 0
-	intro_line4 db "|  coded in NASM Assembly - Version 0.4a   |", 10, 0
+	intro_line4 db "|  coded in NASM Assembly - Version 0.6a   |", 10, 0
 	intro_line5 db "+------------------------------------------+", 10, 0
 	press_key_txt db "Start(1), Save Game *works in all rooms*(500) Load Game *work only her*(501) ", 0
     sluttext db "Press any key to exit.", 10, 0
