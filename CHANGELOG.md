@@ -4,6 +4,7 @@ This file documents the changes, improvements, and new features for each version
 
 --
 ## Version 0.8 – 2025 July 11
+🔹 **Key System**
 - New key system so you can choose between the keys you find.
 ---
 
