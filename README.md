@@ -19,7 +19,8 @@ This is a pure text-based labyrinth adventure running in the console.
 - Intro screen with version info and ASCII box
 - 5 rooms working (Hallway, Kitchen, Bedroom, Living Room, Attic, etc....)
 - Map system preview, key is working now
-- Placeholder for additional rooms 
+- Placeholder for additional rooms
+- Save/load system (is working with txt now, and you can save and laod the game also)
 
 ## 🧠 Author
 
@@ -34,7 +35,7 @@ Built from scratch in NASM as a personal learning and game project.
 - Weapon selection based on room
 - Backwards word puzzle
 - Bible verse viewer (17 random verses)
-- Save/load system (is working with txt now)
+
 
 ---
 
