@@ -13,6 +13,6 @@ key_flags:
     dd have_key_attic
     
 
-keyname_attic:      db "Key found in Kitchen", 10, 0
+keyname_attic:      db "Rusty Key found in Kitchen", 10, 0
 
 
