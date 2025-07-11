@@ -2,6 +2,9 @@ global main ;Starter file
 global choose
 global exit_game
 extern _exit
+extern _fopen, _fgets, _printf
+extern Hallway   ;link to room
+extern _printf, _getch, _system  
 
 section .data
     cls_cmd db "cls", 0       ; define the clear screan
@@ -9,17 +12,16 @@ section .data
 	intro_line1 db "+------------------------------------------+", 10, 0
 	intro_line2 db "|  WELCOME TO ADVENTURE LABYRINT           |", 10, 0
 	intro_line3 db "|  Made by Tommy Clemmensen *OZ1THC* 2025  |", 10, 0
-	intro_line4 db "|  coded in NASM Assembly - Version 0.2a   |", 10, 0
+	intro_line4 db "|  coded in NASM Assembly - Version 0.3a   |", 10, 0
 	intro_line5 db "+------------------------------------------+", 10, 0
 	press_key_txt db "Press any key to start...", 10, 0
-    sluttext db "press any key to exit.", 10, 0
+    sluttext db "Press any key to exit.", 10, 0
+   
 
 section .bss
 	choose resd 1
-
-section .text
-    extern _printf, _getch, _system    
-    extern Hallway   ;link to room
+	 
+section .text   
     
 show_intro_box:
     push intro_line1
@@ -53,11 +55,10 @@ main:
     call _system
 
     call show_intro_box	
-
+     
     call _getch           ; wait for keypress
 
-    call Hallway           ; jump to room
-	
+    jmp Hallway           ; jump to room
 	
 exit_game:
     push cls_cmd   ; clear screan
@@ -70,4 +71,5 @@ exit_game:
    
     mov eax, 1      
     push eax
-    call _exit       
+    call _exit    
+

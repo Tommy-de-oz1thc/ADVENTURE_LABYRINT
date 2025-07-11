@@ -57,7 +57,6 @@ scan_choose:
     add esp, 4
     push choose               ;choose room to jump to
     push choose_format
-    push choose_format
     call _scanf
     add esp, 8
 
@@ -80,18 +79,31 @@ scan_choose:
 Pick_key:
     push cls_cmd
     call _system
+
     mov eax, [have_key]
     cmp eax, 0
-    jne SkipKey
-    mov dword [have_key], 1   ;pick up the key
+    je TakeIt
 
+AlreadyHaveKey:
     push found_text
     call _printf
     add esp, 4
+    call _getch
+    jmp Kitchen
+
+TakeIt:
+    mov dword [have_key], 1
+    push found_text
+    call _printf
+    add esp, 4
+    call _getch
+    jmp Kitchen
+
 
 SkipKey:
-    call _getch      
-    jmp Kitchen
+    cmp eax, 0
+    jne AlreadyHaveKey
+
 
 tjeck_map_showing:
     mov eax, [map_found]

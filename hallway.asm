@@ -12,7 +12,6 @@ section .data
     prompthallway1 db "Living Room(1), Bedroom(2), Kitchen(3), Attic(4), Exit the House(5): Take the Map(6)", 0
     prompthallway2 db "Living Room(1), Bedroom(2), Kitchen(3), Attic(4), Exit the House(5): ", 0
 	choose_format db "%d", 0
-	some_missing_text db "The door to the attic is locked. You don't have the key! Press any key to go back.", 10, 0
 	map_text_found db "You pick up the old map:", 10, "Press any key to continue", 0
     no_map_msg db "You don't have the map, press any key to go back.", 0
 	map_tip db 'Press "1000" to view the map', 10, 0
@@ -31,7 +30,7 @@ Hallway:
 	call _printf        ; print out text
 	add esp, 4
 	
-	 mov eax, [map_found]    ;check up map is found
+	mov eax, [map_found]    ;check up map is found
     cmp eax, 0
     je .spring_map_tip
 
@@ -39,7 +38,7 @@ Hallway:
     call _printf
     add esp, 4
 
-.spring_map_tip   
+.spring_map_tip:   
     mov eax, [map_found]	;check up map is found
     cmp eax, 0
     je show_prompt1
@@ -68,7 +67,8 @@ scan_choose:
     cmp eax, 3
     je Kitchen
     cmp eax, 4
-    je TjeckKey					;check up you the key to open the door to the attic
+	mov dword [retur_value], 1 ; 1 = Hallway
+    je Attic					;check up you the key to open the door to the attic
     cmp eax, 5
     je exit_game
     cmp eax, 6
@@ -78,19 +78,6 @@ scan_choose:
 	
     call _getch
     jmp Hallway                 ;jump back if no room was choosen  
-   
-TjeckKey:
-    push cls_cmd
-    call _system
-    mov eax, [have_key]
-    cmp eax, 1
-    je Attic
-
-    push some_missing_text
-    call _printf
-    add esp, 4
-    call _getch      
-    jmp Hallway
 
 find_map:
     push cls_cmd
