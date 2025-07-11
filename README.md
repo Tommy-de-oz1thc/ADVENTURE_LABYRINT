@@ -14,8 +14,8 @@ This is a pure text-based labyrinth adventure running in the console.
 
 ## 📦 Current Version
 
-Latest release: **v.0.8** – Includes 5 rooms, save and load functionality.
-- Added new advanced key system, so you can choose between all the keys you pickup.
+Latest release: **v.1.0** – Includes 5 rooms, save and load functionality.
+- First realese version of exe file
 
 ## Roadmap
 
