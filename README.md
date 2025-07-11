@@ -14,7 +14,18 @@ This is a pure text-based labyrinth adventure running in the console.
 
 ## 📦 Current Version
 
-**Version 0.7**
+Latest release: **v.0.7** – Includes 5 rooms, save and load functionality.
+
+## Roadmap
+
+- **v.1.0** – Add Reverse function and Biblevers feature
+- **v.2.0** – Advanced key system and CW (Morse code) integration
+- **v.3.0** – Ability to collect and choose weapons
+- **v.4.0** – Monster encounters and combat
+
+Additional rooms will be added, including locked rooms requiring the correct keys.
+
+Only major versions (v.1.0, v.2.0, etc.) will include a compiled `.exe` release.
 
 - Intro screen with version info and ASCII box
 - 5 rooms working (Hallway, Kitchen, Bedroom, Living Room, Attic, etc....)
