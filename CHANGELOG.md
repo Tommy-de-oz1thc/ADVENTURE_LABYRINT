@@ -4,6 +4,13 @@ This file documents the changes, improvements, and new features for each version
 
 ---
 
+## Version 0.7a – 2025 July 11
+🔹 **Exit Text**
+- Different Exit Text Added from `Hallway.asm` and `Attic.asm`
+- Added jump out of window from Attic
+  
+---
+
 ## Version 0.6a – 2025 July 11
 🔹 **Save & Load System**
 - Added `savegame.asm` and `loadgame.asm`
