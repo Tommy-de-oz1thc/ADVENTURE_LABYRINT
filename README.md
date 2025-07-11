@@ -42,7 +42,6 @@ Built from scratch in NASM as a personal learning and game project.
 
 ### 🔑 Planned features (for later versions)
 
-- Key system to unlock rooms (is working now but had to be change a little later, so you can choose between keys you had pickup, so there can be different keys to different rooms)
 - Weapon selection based on room
 - Backwards word puzzle
 - Bible verse viewer (17 random verses)
