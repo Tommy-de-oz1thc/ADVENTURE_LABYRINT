@@ -6,7 +6,7 @@ global choose
 global exit_game
 extern _exit
 extern _fopen, _fgets, _printf
-extern Hallway, Bedroom, Kitchen, Living_Room, Attic   ;link to room
+extern Hallway, Bedroom, Kitchen, Living_Room, Attic, SaveGame, LoadGame   ;link to room
 extern _printf, _scanf, _getch, _system  
 extern LoadGame
 
@@ -18,7 +18,7 @@ section .data
 	intro_line3 db "|  Made by Tommy Clemmensen *OZ1THC* 2025  |", 10, 0
 	intro_line4 db "|  coded in NASM Assembly - Version 0.3a   |", 10, 0
 	intro_line5 db "+------------------------------------------+", 10, 0
-	press_key_txt db "Start(1), Load Game (501) ", 0
+	press_key_txt db "Start(1), Save Game *works in all rooms*(500) Load Game *work only her*(501) ", 0
     sluttext db "Press any key to exit.", 10, 0
    
 
@@ -72,25 +72,19 @@ main:
     mov eax, [choose]
     cmp eax, 1
 	je Hallway
+	cmp eax, 500
+    je SaveAndContinue
     cmp eax, 501
-    je LoadAndStart
+    je LoadGame
     cmp eax, 2
 	jmp main;
 	
-LoadAndStart:
-    call LoadGame
-    mov eax, [current_room]
-    cmp eax, 1
-    je Hallway
-    cmp eax, 2
-    je Bedroom
-    cmp eax, 3
-    je Kitchen
-    cmp eax, 4
-    je Attic
-    cmp eax, 5
-    je Living_Room
-    jmp Hallway  ; fallback
+SaveAndContinue:
+    mov dword [current_room], 0   ; 0 = main
+    call SaveGame
+    jmp main
+	
+
 	
 exit_game:
     push cls_cmd   ; clear screan

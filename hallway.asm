@@ -85,8 +85,6 @@ SaveAndContinue:
     call SaveGame
     jmp Hallway
 
-
-
 find_map:
     push cls_cmd
     call _system
