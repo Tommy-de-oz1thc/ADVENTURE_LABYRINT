@@ -15,21 +15,21 @@ This file documents the changes, improvements, and new features for each version
 
 ---
 
-## Version 0.5a
+## Version 0.5a – 2025 July 10
 🔹 **Key System**
 - Added a key item that can be found and used to unlock the attic door
 - The attic (`attic.asm`) can now only be accessed with the correct key found in the kitchen
 
 ---
 
-## Version 0.4a
+## Version 0.4a – 2025 July 9
 🔹 **Room Structure Expanded**
 - Added more rooms and navigation between them: Hallway, Bedroom, Kitchen, etc.
 - Each room has its own logic and menu choices
 
 ---
 
-## Version 0.3a
+## Version 0.3a – 2025 July 8
 🔹 **Core Room Logic**
 - Player can move between rooms using simple menu input
 - `map.asm` defines room connections
@@ -37,14 +37,14 @@ This file documents the changes, improvements, and new features for each version
 
 ---
 
-## Version 0.2a
+## Version 0.2a – 2025 July 7
 🔹 **Startup Display**
 - Added welcome screen with version and author credits
 - Basic layout for the main menu in `adventure.asm`
 
 ---
 
-## Version 0.1a
+## Version 0.1a – 2025 July 6
 🔹 **Prototype**
 - First working version with two test rooms
 - Text output via DOS terminal using NASM Assembly
