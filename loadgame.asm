@@ -47,10 +47,11 @@ LoadGame:
     je Bedroom
     cmp eax, 3
     je Kitchen
-    cmp eax, 4
-    je Attic
-    cmp eax, 5
+	cmp eax, 4
     je Living_Room
+    cmp eax, 5
+    je Attic
+  
     ; fallback
     jmp main
 
