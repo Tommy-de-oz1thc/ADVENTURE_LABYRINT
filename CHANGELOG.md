@@ -4,7 +4,7 @@ This file documents the changes, improvements, and new features for each version
 
 ---
 
-## Version 0.6a – 2025-07-09
+## Version 0.6a – 2025-07-11
 🔹 **Save & Load System**
 - Added `savegame.asm` and `loadgame.asm`
 - The game can now be saved to `savegame.txt` and loaded correctly
