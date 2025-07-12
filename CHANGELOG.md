@@ -4,6 +4,14 @@ This file documents the changes, improvements, and new features for each version
 
 ---
 
+## Version 3.0 – 2025 July 12
+🔹 **Third release*
+- Small changes with Speak and CW.
+
+---
+
+---
+
 ## Version 2.3 – 2025 July 12
 🔹 **Speak*
 - CW work better now.
