@@ -4,6 +4,16 @@ This file documents the changes, improvements, and new features for each version
 
 ---
 
+## Version 2.3 – 2025 July 12
+🔹 **Speak*
+- CW work better now.
+- Speak had been added.
+
+---
+
+
+---
+
 ## Version 2.1 – 2025 July 12
 🔹 **Bug fix*
 - CW_Code_Word was not having a link to the room.
