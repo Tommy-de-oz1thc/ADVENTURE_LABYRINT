@@ -14,8 +14,8 @@ This is a pure text-based labyrinth adventure running in the console.
 
 ## 📦 Current Version
 
-Latest release: **v.1.0** – Includes 5 rooms, save and load functionality.
-- First realese version of exe file
+Latest release: **v.2.3** – Includes 7 rooms, save and load functionality.
+- Speak and cw is worken now.
 
 ## Roadmap
 
