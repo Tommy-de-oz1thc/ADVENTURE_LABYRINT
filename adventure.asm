@@ -1,6 +1,6 @@
 global main ;Starter file
 global current_room
-global have_key
+global retur_value
 global map_found
 global choose
 global exit_game
@@ -16,23 +16,27 @@ section .data
 	intro_line1 db "+------------------------------------------+", 10, 0
 	intro_line2 db "|  WELCOME TO ADVENTURE LABYRINT           |", 10, 0
 	intro_line3 db "|  Made by Tommy Clemmensen *OZ1THC* 2025  |", 10, 0
-	intro_line4 db "|  coded in NASM Assembly - Version 2.0    |", 10, 0
+	intro_line4 db "|  coded in NASM Assembly - Version 2.3    |", 10, 0
 	intro_line5 db "+------------------------------------------+", 10, 0
 	press_key_txt db "Start(1), Save Game *works in all rooms*(500) Load Game *work only her*(501) ", 0
     slutHallway db "You walked out of the house", 10, 0
 	sluttext db "Press any key to exit.", 0
 	slutAttic db "Do not jump out off a window.", 10, 0
-   
+    say_cmd db "txt\\say.exe Welcome to Adventur Libyrint. Press 1 to start.", 0
+
+    retur_value dd 0
+    
+
 
 section .bss
 	choose resd 1
 	current_room resd 1
-    have_map     resd 1
-    have_key     resd 1
+  
+  
 	map_found resb 1
 	 
 section .text   
-    
+   
 show_intro_box:
     push intro_line1
     call _printf
@@ -60,26 +64,35 @@ show_intro_box:
 
     ret
 
+
 main:
-    push cls_cmd   ; clear screan
-    call _system
+    
 
     call show_intro_box	
-     
-    push choose                 ;choose room to jump to
+    push say_cmd     ; Tekst-til-tale: "Hello from Assembly"
+    call _system 
+    push choose
     push choose_format
     call _scanf                
     add esp, 8
 
     mov eax, [choose]
     cmp eax, 1
-	je Hallway
-	cmp eax, 500
+    je Hallway
+    cmp eax, 500
     je SaveAndContinue
     cmp eax, 501
     je LoadGame
-    cmp eax, 2
-	jmp main;
+
+invalid_choice:
+    push say_cmd     ; Tekst-til-tale: "Hello from Assembly"
+    call _system
+
+    push press_key_txt
+    call _printf
+    add esp, 4
+    jmp main
+
 	
 SaveAndContinue:
     mov dword [current_room], 0   ; 0 = main

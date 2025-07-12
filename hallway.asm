@@ -1,5 +1,5 @@
 global Hallway
-extern Living_Room, Bedroom, Kitchen, Attic, SaveGame, Show_map
+extern Living_Room, Bedroom, Kitchen, Attic, SaveGame, Show_map, CW_Code_Word
 extern _printf, _getch, _system, _scanf
 extern retur_value, choose, current_room
 extern show_keys_and_try_unlock
@@ -7,7 +7,7 @@ extern map_found
 
 section .data
 	hallway_txt db "You are now in the Hallway", 10, 0
-	valg_txt db "Living Room(1), Bedroom(2), Kitchen(3), Attic(4), Exit the House(5): ", 0
+	valg_txt db "Living Room(1), Bedroom(2), Kitchen(3), Attic(4), CW_Code_Word(5), Exit the House(6): ", 0
 	cls_cmd db "cls", 0       ; define the clear screan
 	choose_format db "%d", 0
 	no_map_msg db "You don't have the map, press any key to go back.", 0
@@ -70,6 +70,8 @@ Hallway:
 
 .not_attic:
     cmp eax, 5
+	je CW_Code_Word
+    cmp eax, 6
     je end_game
     cmp eax, 500
     je SaveAndContinue
@@ -78,7 +80,7 @@ Hallway:
     jmp Hallway               ;jump back if no room was choosen  
 	
 SaveAndContinue:
-    mov dword [current_room], 3   ; 3 = Kitchen
+    mov dword [current_room], 1   ; 1 = Hallway
     call SaveGame
     jmp Hallway
 

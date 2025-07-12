@@ -22,7 +22,7 @@ section .data
     no_map_msg db "You don't have the map, press any key to go back.", 0
 	map_tip db 'Press "1000" to view the map', 10, 0
 	map_text_found db "You pick up the old map:", 10, "Press any key to continue", 0
-
+    say_cmd db "txt\\say.exe You pick up a old map.", 0
 	
 section .bss
 
@@ -109,11 +109,14 @@ TjeckKey_OK:
     jmp Hallway      ; forkert nøgle eller ingen nøgler
 
 find_map:
-    push cls_cmd
-    call _system
+  
     mov byte [map_found], 1
+	push say_cmd     ; Tekst-til-tale: "Hello from Assembly"
+    call _system 
     push map_text_found
     call _printf
+	push cls_cmd
+    call _system
     call _getch      
     jmp attic_entry
 

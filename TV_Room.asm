@@ -3,12 +3,12 @@ global TV_Room
 extern _getch, _printf, _scanf, _system
 extern choose, current_room, retur_value
 extern SaveGame, Show_map 
-extern CW_Code_Word
+extern Bedroom
 extern map_found
 
 section .data
 TV_Room_txt db "You are in the TV Room", 10, 0
-go_to_txt db "CW_Code_Room(1): ", 0
+go_to_txt db "Bedroom(1): ", 0
 choose_format db "%d", 0
 cls_cmd db "cls", 0       ; define the clear screan
 no_map_msg db "You don't have the map, press any key to go back.", 0
@@ -47,7 +47,7 @@ TV_Room:
 
     mov eax, [choose]
     cmp eax, 1
-    je CW_Code_Word 
+    je Bedroom 
 	cmp eax, 500
     je SaveAndContinue
     cmp eax, 1000
@@ -57,7 +57,7 @@ TV_Room:
 
 
 SaveAndContinue:
-    mov dword [current_room], 3   ; 3 = Kitchen
+    mov dword [current_room], 3   ; 3 = TV Room
     call SaveGame
     jmp TV_Room
 
@@ -71,7 +71,7 @@ tjeck_map_showing:
     cmp eax, 1
     jne not_any_map      
     mov eax, TV_Room
-    mov dword [retur_value], 1 ; 1 = Hallway
+    mov dword [retur_value], 10 ; 10 = TV_Room
     call Show_map
     jmp TV_Room
 

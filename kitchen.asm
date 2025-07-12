@@ -5,7 +5,7 @@ global Kitchen
 	 extern Hallway, Bedroom, Living_Room, Show_map, SaveGame
 	 extern _printf, _scanf, _getch, _system
      extern choose, have_key, retur_value, map_found, current_room	 
-	 extern have_key_attic, have_key_kitchen
+	 extern have_key_attic, have_key_creativ
 	 
 section .data
     text_kitchen db "You are now in the slightly messy kitchen.", 10, 0
@@ -16,7 +16,7 @@ section .data
     found_text db "You find a rusty key on the table. Press any key to pick it up.", 10, 0
     no_map_msg db "You don't have the map, press any key to go back.", 0
 	map_tip db 'Press "1000" to view the map', 10, 0
-
+    say_cmd db "txt\\say.exe You found a rusty old key, where could it be used?", 0
     debug_format db "DEBUG: have_key_attic = %d", 10, 0
 	
 section .bss
@@ -92,7 +92,7 @@ SaveAndContinue:
 Pick_key:
     push cls_cmd
     call _system
-   ; mov eax, [have_key]
+   
     movzx eax, byte [have_key_attic]
     cmp eax, 0
     je TakeIt
@@ -105,12 +105,13 @@ AlreadyHaveKey:
     jmp Kitchen
 
 TakeIt:
-   ; mov dword [have_key], 1
 	mov byte [have_key_attic], 1
 
     push found_text
     call _printf
     add esp, 4
+	push say_cmd     ; Tekst-til-tale: "Hello from Assembly"
+    call _system 
     call _getch
     jmp Kitchen
 

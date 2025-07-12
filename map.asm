@@ -1,9 +1,9 @@
 global Show_map
-global retur_value
+
 global ret_to_hallway, ret_to_living_room, ret_to_bedroom, ret_to_kitchen, ret_to_attic
 
 extern _printf, _getch, _system
-extern _fopen, _fclose, _fgets
+extern _fopen, _fclose, _fgets, retur_value
 extern Hallway, Living_Room, Bedroom, Kitchen, attic_entry
 
 section .data
@@ -19,7 +19,7 @@ section .bss
 	file resd 1   
 	read_buf resb 100 
 	retur_ptr resd 1
-	retur_value resd 1   ; <-- Tilføjet for at gøre retur_værdi tilgængelig
+	
 
 
 section .text

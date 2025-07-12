@@ -3,7 +3,7 @@ global SaveGame
 extern _fopen, _fprintf, _fclose, _printf, _getch
 extern current_room
 extern map_found, have_key_attic 
-extern Hallway, Bedroom, Kitchen, Attic, Living_Room, main
+extern Hallway, Bedroom, Kitchen, attic_entry, Living_Room, Aschii_Show, Reverse,Biblevers, CW_Code_Word, main
 
 section .data
 save_filename db "txt\\savegame.txt", 0
@@ -52,8 +52,16 @@ SaveGame:
     je Kitchen
     cmp eax, 4
     je Living_Room
-	cmp eax, 4
-    je Attic
+	cmp eax, 5
+    je attic_entry
+	cmp eax, 6
+    je Reverse
+	cmp eax, 7
+    je Biblevers
+	cmp eax, 8
+	je CW_Code_Word
+	cmp eax, 9
+	je Aschii_Show
     ; fallback
     jmp main
 

@@ -1,6 +1,6 @@
 global Bedroom
 
-extern Hallway, Living_Room, Kitchen, Show_map, SaveGame
+extern Hallway, Living_Room, Kitchen, Show_map, SaveGame, Aschii_Show
 extern _printf, _scanf, _getch, _system
 extern choose, map_found, map_tip
 extern _fopen, _fprintf, _fclose, _fgets
@@ -10,7 +10,7 @@ section .data
     text_bedroom db "You are now in the bedroom", 10, 0  
     cls_cmd db "cls", 0       ; define the clear screan
     choose_format db "%d", 0
-	promptbedroom db "Hallway(1), Living room(2), Kitchen(3), Read(4): ", 0
+	promptbedroom db "Hallway(1), Living room(2), Kitchen(3), Read(4), Aschii Room(5): ", 0
 	filename db "txt\\names.txt", 0
 	read_mode db "r", 0
 	no_name db "No names yet", 10, 0
@@ -64,6 +64,8 @@ Bedroom:
     je Kitchen
     cmp eax, 4
     je Read
+	cmp eax, 5
+    je Aschii_Show
 	cmp eax, 500
     je SaveAndContinue
     cmp eax, 1000

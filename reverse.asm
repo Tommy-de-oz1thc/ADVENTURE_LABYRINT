@@ -1,6 +1,7 @@
 global Reverse
+extern current_room, retur_value
 extern  _printf, _scanf,  _getch, _system
-extern  Hallway, Biblevers
+extern  Kitchen, Biblevers, SaveGame, Show_map
 extern map_found
 
 section .data
@@ -9,7 +10,7 @@ section .data
 	output_fmt  db "Backwards: %s", 10, 0
 	inputText   db "Write a word and I will reverse it", 10, 0
 	reverse_info  db "You are now standing in the Reverse room.", 10, 0
-	reversetext db "Go back to Hallway(1), Reverse Text(2), Go to Biblevers(3): ", 0 
+	reversetext db "Go to Kitchen(1), Reverse Text(2), Go to Biblevers(3): ", 0 
 	map_tip    db 'Type "1000" to view the map', 10, 0
 	key_press db "Press any key to go back.", 0
 	no_map_msg db "You don't have the map, press any key to go back.", 0
@@ -53,12 +54,41 @@ Reverse:
 
     mov eax, [choose]
     cmp eax, 1
-    je Hallway
+    je Kitchen
     cmp eax, 2
     je read_input
 	cmp eax, 3
     je Biblevers
 	jmp Reverse
+	cmp eax, 500
+    je SaveAndContinue
+    cmp eax, 1000
+    je tjeck_map_showing      ;show a txt with the map
+    jmp Reverse     
+
+SaveAndContinue:
+    mov dword [current_room], 5   ; 5 = Attic
+    call SaveGame
+    jmp Reverse
+
+tjeck_map_showing:
+    mov eax, [map_found]
+    cmp eax, 1
+    jne not_any_map 
+
+    mov eax, Reverse
+    mov dword [retur_value], 6 ; 6 = Reverse
+    call Show_map
+    jmp Reverse
+
+not_any_map:
+    push cls_cmd              ;clear the screan
+    call _system
+    push no_map_msg           ;tells that you do not have the map
+    call _printf
+    add esp, 4
+    call _getch
+    jmp Reverse
 
 read_input:
     push inputText

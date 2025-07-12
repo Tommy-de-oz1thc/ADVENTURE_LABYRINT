@@ -1,8 +1,8 @@
 global Biblevers
 
 extern _printf, _scanf, _getch, _system 
-extern Reverse, Show_map
-extern Vers
+extern Reverse, current_room
+extern Show_map, SaveGame
 extern retur_value, map_found
 
 section .data
@@ -92,8 +92,29 @@ Biblevers:
     
     cmp eax, 2
     je Vers
-    
+    cmp eax, 500
+    je SaveAndContinue
+	cmp eax, 1000
+    je tjeck_map_showing        ;show a txt with the map
     jmp Biblevers
+
+SaveAndContinue:
+    mov dword [current_room], 5   ; 5 = Attic
+    call SaveGame
+    jmp Biblevers
+
+tjeck_map_showing:
+    mov eax, [map_found]
+    cmp eax, 1
+    jne not_any_map
+
+    mov eax, Biblevers
+    mov dword [retur_value], 8 ; 8 = Biblevers
+    call Show_map
+    jmp Biblevers
+
+
+
     
 Vers:
     push cls_cmd
