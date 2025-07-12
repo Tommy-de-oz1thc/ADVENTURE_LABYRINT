@@ -11,7 +11,9 @@
 (5)**Attic**: Locked room, requires a key. Connected to the *Hallway* and *Reverse*. 
                In the attic, you can receive a greeting where you enter your first and last name twice, and it combines them.
 (5)**Map**\*: Here in in the *Attic* you can pick up a *Map*. Hint *1000* shows the *Map*.
-(6)**Reverse**: Connected to the *Hallway* and *Bible Verse*. Here, you receive a word spelled backwards.
+(6)**Reverse**: Connected to the *Kitchen* and *Bible Verse*. Here, you receive a word spelled backwards.
 (7)**Bible Verse**: Connected to the *Backwards* — here you can choose one of 17 Bible verses to read.
-(8)**CW_Code_Word**: Connected to *Hallway* and *CW_Code_Word* - here you can listn to cw and try pass to open the door.
-*(9)**TV Room**:  
+(8)**CW_Code_Word**: Connected to *Hallway* *TV Room* - here you can listn to cw and try pass to open the door.
+(9)**Aschii Show**: *Bedroom* and *TV Room*
+*(10)**TV Room**:
+*(11)**Math_CW_Room**:  
