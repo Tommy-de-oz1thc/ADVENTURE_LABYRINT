@@ -4,10 +4,18 @@ This file documents the changes, improvements, and new features for each version
 
 ---
 
+## Version 2.1 – 2025 July 12
+🔹 **Bug fix*
+- CW_Code_Word was not having a link to the room.
+- txt files had been moved to /txt.
+
+---
+
+---
+
 ## Version 2.0 – 2025 July 12
 🔹 **Second release*
 - Now whit cw wav file a.wav, b.wav, c.wav etc.
----
 
 ---
 
