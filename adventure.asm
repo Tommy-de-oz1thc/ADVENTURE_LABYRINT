@@ -66,7 +66,8 @@ show_intro_box:
 
 
 main:
-    
+    push cls_cmd            ; clear screan
+    call _system
 
     call show_intro_box	
     push say_cmd     ; Tekst-til-tale: "Hello from Assembly"
