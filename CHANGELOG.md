@@ -4,6 +4,13 @@ This file documents the changes, improvements, and new features for each version
 
 ---
 
+## Version 2.0 – 2025 July 12
+🔹 **Second release*
+- Now whit cw wav file a.wav, b.wav, c.wav etc.
+---
+
+---
+
 ## Version 1.0 – 2025 July 11
 🔹 **First release*
 - Biblevers and Reverse is added and the first exe file is released.
