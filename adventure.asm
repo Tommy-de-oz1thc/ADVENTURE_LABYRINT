@@ -6,7 +6,7 @@ global choose
 global exit_game
 extern _exit
 extern _fopen, _fgets, _printf
-extern Hallway, Bedroom, Kitchen, Living_Room, Attic, SaveGame, LoadGame   ;link to room
+extern Hallway, Bedroom, Kitchen, Living_Room, Attic, SaveGame, LoadGame, Biblevers, Reverse   ;link to room
 extern _printf, _scanf, _getch, _system, retur_value 
 extern LoadGame
 
@@ -16,7 +16,7 @@ section .data
 	intro_line1 db "+------------------------------------------+", 10, 0
 	intro_line2 db "|  WELCOME TO ADVENTURE LABYRINT           |", 10, 0
 	intro_line3 db "|  Made by Tommy Clemmensen *OZ1THC* 2025  |", 10, 0
-	intro_line4 db "|  coded in NASM Assembly - Version 1.0    |", 10, 0
+	intro_line4 db "|  coded in NASM Assembly - Version 2.0    |", 10, 0
 	intro_line5 db "+------------------------------------------+", 10, 0
 	press_key_txt db "Start(1), Save Game *works in all rooms*(500) Load Game *work only her*(501) ", 0
     slutHallway db "You walked out of the house", 10, 0

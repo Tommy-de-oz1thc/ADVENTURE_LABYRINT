@@ -11,7 +11,7 @@ section .data
     cls_cmd db "cls", 0       ; define the clear screan
     choose_format db "%d", 0
 	promptbedroom db "Hallway(1), Living room(2), Kitchen(3), Read(4): ", 0
-	filename db "names.txt", 0
+	filename db "txt\\names.txt", 0
 	read_mode db "r", 0
 	no_name db "No names yet", 10, 0
 	nameheadline db "Names in the list:", 10, 0

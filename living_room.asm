@@ -7,13 +7,13 @@ extern retur_value, map_found
 extern choose, have_key, retur_value, map_found
 
 section .data
-	text_living_room db "You are now in the living room", 10, 0  
+	text_living_room db "You are now in the Living Room", 10, 0  
     cls_cmd db "cls", 0       ; define the clear screan
 	choose_format db "%d", 0
 	no_map_msg db "You don't have the map, press any key to go back.", 0
 	map_tip db 'Press "1000" to view the map', 10, 0
 	prompt_living_room db "Hallway(1), Bedroom(2), Kitchen(3), Write down names(4): ", 0
-	filenamename db "names.txt", 0
+	filenamename db "txt\\names.txt", 0
 	write_mode db "a", 0                     ; Append mode
 	name_format db "%99s", 0                ; scanf: reads one name (max 99 chars, stops at space)
 	fprintf_format db "%s", 10, 0           ; fprintf: writes name + newline

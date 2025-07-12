@@ -10,7 +10,7 @@ section .data
 	map_text     db "You look at the old map:", 10, "[map contents here]", 10, 0
 	go_back        db "", 10, "Press a key to return.", 10, 0
 	cls_cmd        db "cls", 0
-	filenamekort   db "map.txt", 0
+	filenamekort   db "txt\\map.txt", 0
 	read_modek     db "r", 0
 
 

@@ -80,7 +80,6 @@ Hallway:
 SaveAndContinue:
     mov dword [current_room], 3   ; 3 = Kitchen
     call SaveGame
-    jmp Kitchen
     jmp Hallway
 
 show_map:

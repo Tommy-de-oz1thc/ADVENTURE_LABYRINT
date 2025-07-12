@@ -6,7 +6,7 @@ extern _fopen, _fscanf, _fclose
 extern main, Hallway, Bedroom, Kitchen, Attic, Living_Room
 
 section .data
-filename db "savegame.txt", 0
+filename db "txt\\savegame.txt", 0
 mode_read db "r", 0
 fmt_string db "%d %d %d", 0
 

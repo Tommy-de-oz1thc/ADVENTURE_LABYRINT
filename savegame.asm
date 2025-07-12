@@ -6,7 +6,7 @@ extern map_found, have_key_attic
 extern Hallway, Bedroom, Kitchen, Attic, Living_Room, main
 
 section .data
-save_filename db "savegame.txt", 0
+save_filename db "txt\\savegame.txt", 0
 save_mode     db "w", 0
 save_format   db "%d %d %d", 0   ; fx have_key, have_map, current_room
 save_ok       db "Game saved!", 10, 0
